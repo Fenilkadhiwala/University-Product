@@ -27,7 +27,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-5 mt-5">Register Here</h2>
+                        <h2 class="card-title text-center mb-5 mt-5">Login Here</h2>
                         <form onsubmit="return validateForm()" method="post" action="login.php">
                             <div class="mb-3">
                                 <label for="uname" class="form-label">User Name</label>
