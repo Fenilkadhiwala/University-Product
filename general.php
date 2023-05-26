@@ -23,8 +23,7 @@ class GeneralMethods
         }
     }
 
-
-    public function insertData($dataArr, $keyArr, $arrValues, $tableName)
+    public function registerInsert($dataArr, $keyArr, $arrValues, $tableName)
     {
         $columns = implode(",", $keyArr);
 
@@ -48,9 +47,34 @@ class GeneralMethods
         }
     }
 
+
+    public function insertData($dataArr, $keyArr, $arrValues, $tableName)
+    {
+        // $columns = implode(",", $keyArr);
+
+
+        // $quotedValues = array_map(function ($value) {
+        //     return "'" . $value . "'";
+        // }, $arrValues);
+
+        // $values = implode(",", $quotedValues);
+
+
+
+        // $query = "INSERT INTO $tableName($columns) VALUES($values)";
+
+        // $result = mysqli_query($this->con, $query);
+
+        // if ($result) {
+        //     header("location:index.php?err=succ");
+        // } else {
+        //     header("location:index.php?err=failed");
+        // }
+    }
+
     public function updateData()
     {
-        
+
     }
     public function deleteData()
     {
