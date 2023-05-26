@@ -59,35 +59,76 @@ class GeneralMethods
 
     public function insertData($dataArr, $keyArr, $arrValues, $tableName)
     {
-        // $columns = implode(",", $keyArr);
+        $columns = implode(",", $keyArr);
 
 
-        // $quotedValues = array_map(function ($value) {
-        //     return "'" . $value . "'";
-        // }, $arrValues);
+        $quotedValues = array_map(function ($value) {
+            return "'" . $value . "'";
+        }, $arrValues);
 
-        // $values = implode(",", $quotedValues);
+        $values = implode(",", $quotedValues);
 
 
 
-        // $query = "INSERT INTO $tableName($columns) VALUES($values)";
+        $query = "INSERT INTO $tableName($columns) VALUES($values)";
 
-        // $result = mysqli_query($this->con, $query);
+        $result = mysqli_query($this->con, $query);
 
-        // if ($result) {
-        //     header("location:index.php?err=succ");
-        // } else {
-        //     header("location:index.php?err=failed");
-        // }
+        if ($result) {
+            header("location:dashboard.php?err=succ");
+        } else {
+            header("location:dashboard.php?err=failed");
+        }
     }
 
-    public function updateData()
+    public function updateData($dataArr, $keyArr, $arrValues, $tableName, $uid)
     {
+        $columns = implode(",", $keyArr);
 
+
+        $quotedValues = array_map(function ($value) {
+            return "'" . $value . "'";
+        }, $arrValues);
+
+        $values = implode(",", $quotedValues);
+
+
+
+
+        $setValues = array();
+        for ($i = 0; $i < count($dataArr); $i++) {
+
+            if (!empty($quotedValues[$i])) {
+                $setValues[] = $keyArr[$i] . " = " . $quotedValues[$i];
+            }
+        }
+        $setStatement = implode(", ", $setValues);
+
+        $query = "UPDATE $tableName SET $setStatement WHERE uid=$uid";
+
+        print_r($setStatement);
+
+
+        $result = mysqli_query($this->con, $query);
+
+        if ($result) {
+            header("location:dashboard.php?err=succ");
+        } else {
+            header("location:dashboard.php?err=failed");
+        }
     }
-    public function deleteData()
-    {
 
+    public function deleteData($dataArr, $keyArr, $arrValues, $tableName, $uid)
+    {
+        $query = "DELETE FROM $tableName WHERE uid=$uid";
+
+        $result = mysqli_query($this->con, $query);
+
+        if ($result) {
+            header("location:dashboard.php?err=deleted");
+        } else {
+            header("location:dashboard.php?err=NotDeleted");
+        }
     }
 
 

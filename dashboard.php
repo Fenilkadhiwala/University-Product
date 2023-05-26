@@ -18,6 +18,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Registration Form</title>
 </head>
 
@@ -25,40 +28,50 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" href="add.php">Add</button>
+                <a class="btn btn-primary" href="add.php">Add</a>
             </div>
         </div>
         <div class="row mt-3 table-responsive">
             <div class="col-12">
-                <table class="table table-striped">
+                <table class="table table-striped text-center">
                     <thead>
                         <tr>
-                            <th>#</th>
+
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Age</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Mark Johnson</td>
-                            <td>markjohnson@example.com</td>
-                            <td>35</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                        <?php
+                        $con = new mysqli("localhost", "root", "", "projects");
+
+                        $query = "SELECT * FROM `faculty`";
+
+                        $result = mysqli_query($con, $query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $uid = $row['uid'];
+                            $name = $row['name'];
+                            $email = $row['email'];
+                            $dept = $row['dept'];
+                            $pos = $row['pos'];
+
+                            echo '
+                            <tr>
+                            <td>' . $name . '</td>
+                            <td>' . $email . '</td>
+                            <td>' . $dept . '</td>
+                            <td>' . $pos . '</td>
+                            <td><a href="update.php?uid=' . $uid . '"><i class="fa-solid fa-pen-to-square"></i></a>   <a href="delete.php?uid=' . $uid . '"><i class="fa-solid fa-trash" style="margin-left:15px"></i></a></td>
+                            </tr>
+                            ';
+                        }
+
+                        ?>
                     </tbody>
                 </table>
             </div>

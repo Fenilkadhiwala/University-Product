@@ -6,6 +6,7 @@ $tableName = "faculty";
 $dbName = "projects";
 
 $keyToDelete = 'submit';
+$uid = $_POST['uid'];
 
 if (isset($dataArr[$keyToDelete])) {
     unset($dataArr[$keyToDelete]);
@@ -21,6 +22,6 @@ $arrValues = array_values($dataArr);
 
 $myObj1 = new GeneralMethods($dbName);
 
-$myObj1->insertData($dataArr, $keyArr, $arrValues, $tableName);
+$myObj1->updateData($dataArr, $keyArr, $arrValues, $tableName, $uid);
 
 ?>
