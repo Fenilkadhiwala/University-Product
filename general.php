@@ -23,7 +23,7 @@ class GeneralMethods
         }
     }
 
-    public function registerInsert($dataArr, $keyArr, $arrValues, $tableName)
+    public function loginVerification($dataArr, $keyArr, $arrValues, $tableName)
     {
         $columns = implode(",", $keyArr);
 
@@ -36,15 +36,24 @@ class GeneralMethods
 
 
 
-        $query = "INSERT INTO $tableName($columns) VALUES($values)";
+        $columnsArray = explode(",", $columns);
+        $valuesArray = explode(",", $values);
+
+        $query = "SELECT * FROM $tableName WHERE $columnsArray[0]=$valuesArray[0] AND $columnsArray[1]=$valuesArray[1]";
 
         $result = mysqli_query($this->con, $query);
 
-        if ($result) {
-            header("location:index.php?err=succ");
+        $row = mysqli_fetch_assoc($result);
+
+        if ($row) {
+            $uid = $row['uid'];
+
+            header("location:dashboard.php?err=$uid");
         } else {
             header("location:index.php?err=failed");
         }
+
+
     }
 
 

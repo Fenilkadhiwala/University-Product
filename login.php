@@ -20,6 +20,6 @@ $arrValues = array_values($dataArr);
 
 $myObj1 = new GeneralMethods($dbName);
 
-$myObj1->registerInsert($dataArr, $keyArr, $arrValues, $tableName);
+$myObj1->loginVerification($dataArr, $keyArr, $arrValues, $tableName);
 
 ?>

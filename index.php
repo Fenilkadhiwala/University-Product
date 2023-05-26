@@ -28,46 +28,17 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-5 mt-5">Register Here</h2>
-                        <form onsubmit="return validateForm()" method="post" action="register.php">
+                        <form onsubmit="return validateForm()" method="post" action="login.php">
                             <div class="mb-3">
                                 <label for="uname" class="form-label">User Name</label>
                                 <input type="text" class="form-control" id="uname" placeholder="Enter your user name"
                                     name="uname" required>
                             </div>
-                            <div class="mb-3 row">
-                                <div class="col">
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="firstName"
-                                        placeholder="Enter your first name" name="fname" required>
-                                </div>
-                                <div class="col">
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName"
-                                        placeholder="Enter your last name" name="lname" required>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email"
-                                    placeholder="Enter your email address" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" name="phone"
-                                    placeholder="Enter your phone number" required>
-                            </div>
+
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" id="pass" name="psw" class="form-control" id="password"
                                     required />
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirm-password" class="form-label">Confirm password</label>
-                                <input type="password" id="confpass" class="form-control" id="confirm-password"
-                                    required />
-                            </div>
-                            <div class="invalid-feedback" id="password-mismatch-msg">
-                                Passwords do not match
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-primary" name="submit">Register</button>
