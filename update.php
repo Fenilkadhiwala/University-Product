@@ -10,6 +10,7 @@ $result = mysqli_query($con, $query);
 if ($row = mysqli_fetch_assoc($result)) {
     $myName = $row['name'];
     $myEmail = $row['email'];
+    $myContact = $row['contact'];
     $myDept = $row['dept'];
     $myPos = $row['pos'];
     $myBio = $row['bio'];
@@ -45,7 +46,7 @@ if ($row = mysqli_fetch_assoc($result)) {
 
 <body>
     <div class="container">
-        <h1>Faculty Details Form</h1>
+        <h1>Update Faculty Record</h1>
         <form action="modify.php" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -58,12 +59,27 @@ if ($row = mysqli_fetch_assoc($result)) {
                     value="<?php echo "$myEmail" ?>">
             </div>
             <div class="mb-3">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="text" class="form-control" id="contact" placeholder="Enter contact number" name="contact"
+                    value="<?php echo "$myContact" ?>">
+            </div>
+            <div class="mb-3">
                 <label for="department" class="form-label">Department</label>
-                <select class="form-select" id="department" name="dept" value="<?php echo "$myDept" ?>">
-                    <option selected>Select department</option>
-                    <option value="1">Department 1</option>
-                    <option value="2">Department 2</option>
-                    <option value="3">Department 3</option>
+                <select class="form-select" id="department" name="dept">
+                    <!-- <option selected>Select department</option>
+                 -->
+                    <option selected="selected">
+
+                        <?php echo "$myDept" ?>
+                    </option>
+                    <option value="CO">CO</option>
+                    <option value="IT">IT</option>
+                    <option value="ME">ME</option>
+                    <option value="CE">CE</option>
+                    <option value="CH">CH</option>
+                    <option value="EC">EC</option>
+                    <option value="TX">TX</option>
+                    <option value="IC">IC</option>
                 </select>
             </div>
             <div class="mb-3">

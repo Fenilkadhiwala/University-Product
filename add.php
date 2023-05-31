@@ -72,12 +72,12 @@
 
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="aadhar" class="form-label">Aadhar Card</label>
                 <br>
                 <input type="file" name="aadhar" id="aadhar" required>
 
-            </div>
+            </div> -->
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

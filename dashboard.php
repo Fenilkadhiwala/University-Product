@@ -36,11 +36,11 @@
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="#">
+                <a href="fac.php">
                     <i class="bx bx-user"></i>
-                    <span class="link_name">User</span>
+                    <span class="link_name">Faculties</span>
                 </a>
-                <span class="tooltip">User</span>
+                <span class="tooltip">Faculties</span>
             </li>
             <li>
                 <a href="#">
@@ -148,7 +148,7 @@
 
             <div id="fb">
 
-                <a href="add.php" class="btn btn-primary" id="addFac">
+                <a href="add.php" class="btn btn-primary" style="padding-top: 10px;">
 
 
                     <i class="fa-solid fa-plus"></i> Add Faculty
@@ -161,17 +161,58 @@
             </div>
 
             <div class="table-responsive mt-3">
-                <table class="table table-striped">
+                <table class="table table-striped text-center">
                     <thead>
                         <tr>
                             <th>Sr no.</th>
                             <th>Designation</th>
                             <th>Faculty Name</th>
                             <th>Department</th>
+                            <th>Email</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
 
+                        $lh = "localhost";
+                        $uname = "root";
+                        $psw = "";
+                        $db = "Projects";
+
+                        $con = new mysqli($lh, $uname, $psw, $db);
+
+                        if (!$con) {
+                            die(mysqli_error($con));
+
+                        }
+
+                        $query = "SELECT * FROM `FACULTY`";
+
+                        $result = mysqli_query($con, $query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                            $id = $row['uid'];
+                            $name = $row['name'];
+                            $email = $row['email'];
+                            $contact = $row['contact'];
+                            $dept = $row['dept'];
+                            $pos = $row['pos'];
+                            $bio = $row['bio'];
+                            $img = $row['img'];
+
+                            echo '<tr>
+                    <td class="serial-number">1</td>
+                    <td>' . $pos . '</td>
+                    <td>' . $name . '</td>
+                    <td> ' . $dept . '</td>
+                    <td> ' . $email . '</td>
+                    <td><a href="update.php?uid=' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a> <a href="delete.php?uid=' . $id . '"><i class="fa-solid fa-trash"></i></a></td>
+                </tr>';
+                        }
+
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -191,7 +232,7 @@
             var rows = table.getElementsByTagName("tr");
 
             for (var i = 1; i < rows.length; i++) {
-                var nameColumn = rows[i].getElementsByTagName("td")[1];
+                var nameColumn = rows[i].getElementsByTagName("td")[2];
                 if (nameColumn) {
                     var name = nameColumn.innerText.toUpperCase();
                     if (name.includes(filter)) {
