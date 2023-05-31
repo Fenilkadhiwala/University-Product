@@ -27,7 +27,7 @@
 <body>
     <div class="container">
         <h1>Faculty Details Form</h1>
-        <form action="insert.php" method="post">
+        <form action="insert.php" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
@@ -53,6 +53,14 @@
                 <label for="bio" class="form-label">Bio</label>
                 <textarea class="form-control" id="bio" rows="3" placeholder="Enter bio" name="bio"></textarea>
             </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">File</label>
+                <input type="file" name="image" id="image">
+
+            </div>
+
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

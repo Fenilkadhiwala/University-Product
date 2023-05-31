@@ -48,7 +48,7 @@ class GeneralMethods
         if ($row) {
             $uid = $row['uid'];
 
-            header("location:dashboard.php?err=$uid");
+            header("location:dashboard.php?succ=$uid");
         } else {
             header("location:index.php?err=failed");
         }
