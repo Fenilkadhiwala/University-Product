@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -137,13 +141,88 @@
             </div>
         </div>
 
-        
+
+
+
+        <div class="container mt-5">
+
+            <div id="fb">
+
+                <a href="add.php" class="btn btn-primary" id="addFac">
+
+
+                    <i class="fa-solid fa-plus"></i> Add Faculty
+
+                </a>
+
+                <div class="mb-3">
+                    <input type="text" class="" id="searchInput" placeholder="Search..." onkeyup="searchTable()">
+                </div>
+            </div>
+
+            <div class="table-responsive mt-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sr no.</th>
+                            <th>Designation</th>
+                            <th>Faculty Name</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
 
     </section>
+
+
     <!-- Scripts -->
+    <script>
+        function searchTable() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toUpperCase();
+            var table = document.querySelector("table");
+            var rows = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < rows.length; i++) {
+                var nameColumn = rows[i].getElementsByTagName("td")[1];
+                if (nameColumn) {
+                    var name = nameColumn.innerText.toUpperCase();
+                    if (name.includes(filter)) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        var table = document.getElementById("myTable");
+        var tbody = table.getElementsByTagName("tbody")[0];
+
+        // Get all the serial number cells in the table
+        var serialNumberCells = tbody.getElementsByClassName("serial-number");
+
+        // Loop through each serial number cell and update the number
+        for (var i = 0; i < serialNumberCells.length; i++) {
+            serialNumberCells[i].textContent = i + 1;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+    <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
     <script src="script.js"></script>
 </body>
 
