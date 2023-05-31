@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-    --color-default: #004f83;
+    --color-default: white;
     --color-second: #0067ac;
-    --color-white: #fff;
+    --color-white: black;
     --color-body: #e4e9f7;
     --color-light: #e0e0e0;
 }
@@ -30,6 +30,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 .sidebar.open {
@@ -290,7 +291,7 @@ body {
 
 .home-section .text {
     display: inline-block;
-    color: var(--color-default);
+    /* color: var(--color-default); */
     font-size: 25px;
     font-weight: 500;
     margin: 18px;
