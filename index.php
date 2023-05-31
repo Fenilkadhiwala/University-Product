@@ -38,7 +38,7 @@
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" id="pass" name="psw" class="form-control" id="password"
-                                    required />
+                                    placeholder="Enter your user password" required />
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-primary" name="submit">Register</button>

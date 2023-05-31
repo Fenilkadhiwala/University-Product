@@ -104,7 +104,7 @@ body {
     top: -20px;
     left: calc(100% + 15px);
     z-index: 3;
-    background-color: var(--color-white);
+    color: black;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     padding: 6px 14px;
     font-size: 15px;
@@ -141,7 +141,7 @@ body {
 }
 
 .sidebar input::placeholder {
-    color: var(--color-light)
+    color: var(--color-light);
 }
 
 .sidebar.open input {
@@ -264,11 +264,12 @@ body {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background-color: var(--color-second);
+    background-color: var(--color-body);
+    /* color: white; */
     width: 100%;
     height: 60px;
     line-height: 60px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     cursor: pointer;
     transition: all 0.5s ease;
 }
@@ -280,7 +281,7 @@ body {
 
 .home-section {
     position: relative;
-    background-color: var(--color-body);
+    background-color:#f1f1f1;
     min-height: 100vh;
     top: 0;
     left: 78px;
@@ -289,9 +290,12 @@ body {
     z-index: 2;
 }
 
+
+
 .home-section .text {
     display: inline-block;
     /* color: var(--color-default); */
+    width: 100%;
     font-size: 25px;
     font-weight: 500;
     margin: 18px;
@@ -300,4 +304,10 @@ body {
 .sidebar.open~.home-section {
     left: 250px;
     width: calc(100% - 250px);
+}
+
+#myCard:hover{
+    cursor: pointer;
+    background-color: rgb(212, 210, 210);
+    /* color: white; */
 }

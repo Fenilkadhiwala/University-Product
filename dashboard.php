@@ -5,8 +5,10 @@
     <title>Responsive Sidebar</title>
     <!-- Link Styles -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -84,13 +86,64 @@
         </ul>
     </div>
     <section class="home-section">
-        <div class="text">Welcome To Dashboard</div>
+        <div class="text">
+            Welcome To Dashboard
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card" id="myCard">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Logged in user</h5>
+                            <p class="card-text">Count</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card" id="myCard">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Total Books</h5>
+                            <p class="card-text">Count</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card" id="myCard">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Total Faculties</h5>
+                            <p class="card-text">Count</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card" id="myCard">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Borrowed</h5>
+                            <p class="card-text">Count</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         
 
     </section>
     <!-- Scripts -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 
