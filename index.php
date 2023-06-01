@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-5 mt-5">Login Here</h2>
-                        <form onsubmit="return validateForm()" method="post" action="login.php">
+                        <form method="post" action="login.php">
                             <div class="mb-3">
                                 <label for="uname" class="form-label">User Name</label>
                                 <input type="text" class="form-control" id="uname" placeholder="Enter your user name"
@@ -41,7 +41,7 @@
                                     placeholder="Enter your user password" required />
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary" name="submit">Register</button>
+                                <button type="submit" class="btn btn-primary" name="submit">Log in</button>
                             </div>
                         </form>
                     </div>
@@ -50,25 +50,10 @@
         </div>
     </div>
 
-    <script>
-        const password = document.getElementById("pass");
-        const confirmPassword = document.getElementById("confpass");
-        const passwordMismatchMsg = document.getElementById(
-            "password-mismatch-msg"
-        );
 
-        confirmPassword.addEventListener("input", () => {
-            if (password.value !== confirmPassword.value) {
-                confirmPassword.setCustomValidity("Passwords do not match");
-                passwordMismatchMsg.style.display = "block";
-            } else {
-                confirmPassword.setCustomValidity("");
-                passwordMismatchMsg.style.display = "none";
-            }
-        });
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></sc >
+</body >
+
+</html >

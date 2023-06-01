@@ -1,3 +1,17 @@
+<?php
+$lh = "localhost";
+$uname = "root";
+$psw = "";
+$db = "Projects";
+
+$con = new mysqli($lh, $uname, $psw, $db);
+
+if (!$con) {
+    die(mysqli_error($con));
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +95,20 @@
                 <div class="profile_details">
                     <!-- <img src="profile.jpeg" alt="profile image"> -->
                     <div class="profile_content">
-                        <div class="name">Anna Jhon</div>
+                        <div class="name">
+                            <?php
+                            $uid = $_GET['uid'];
+                            $q1 = "SELECT uname FROM `USERREGISTER` WHERE uid=$uid";
+
+                            $result = mysqli_query($con, $q1);
+
+
+                            $row = mysqli_fetch_assoc($result);
+                            $admin = $row['uname'];
+                            echo "$admin";
+
+                            ?>
+                        </div>
                         <div class="designation">Admin</div>
                     </div>
                 </div>
@@ -92,6 +119,7 @@
     <section class="home-section">
         <div class="text">
             Welcome To Dashboard
+
         </div>
         <div class="container">
             <div class="row">
@@ -175,17 +203,7 @@
                     <tbody>
                         <?php
 
-                        $lh = "localhost";
-                        $uname = "root";
-                        $psw = "";
-                        $db = "Projects";
 
-                        $con = new mysqli($lh, $uname, $psw, $db);
-
-                        if (!$con) {
-                            die(mysqli_error($con));
-
-                        }
 
                         $query = "SELECT * FROM `FACULTY`";
 
