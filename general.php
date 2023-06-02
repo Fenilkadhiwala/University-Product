@@ -47,7 +47,7 @@ class GeneralMethods
 
         if ($row) {
             $uid = $row['uid'];
-
+            setcookie('uid', $uid, time() + 3600);
             header("location:dashboard.php?uid=$uid");
         } else {
             header("location:index.php?err=failed");
