@@ -4,6 +4,8 @@ if (!isset($_COOKIE['uid'])) {
   header('Location: index.php');
   exit();
 }
+
+
 ?>
 
 
@@ -13,7 +15,7 @@ if (!isset($_COOKIE['uid'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Library Management System</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -294,6 +296,15 @@ if (!isset($_COOKIE['uid'])) {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
+                <i class="nav-icon fa-solid fa-chalkboard-user"></i>
+                <p>
+                  FACULTIES
+
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fa-solid fa-book"></i>
                 <p>
                   ADD BOOKS
@@ -303,7 +314,7 @@ if (!isset($_COOKIE['uid'])) {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-              <i class="nav-icon fa-solid fa-book-open"></i>
+                <i class="nav-icon fa-solid fa-book-open"></i>
                 <p>
                   ISSUE BOOKS
 
@@ -314,7 +325,7 @@ if (!isset($_COOKIE['uid'])) {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-              <i class="nav-icon fa-solid fa-user"></i>
+                <i class="nav-icon fa-solid fa-user"></i>
                 <p>
                   MEMBERS
 
@@ -324,7 +335,7 @@ if (!isset($_COOKIE['uid'])) {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-              <i class="nav-icon fa-solid fa-graduation-cap"></i>
+                <i class="nav-icon fa-solid fa-graduation-cap"></i>
                 <p>
                   STUDENTS
                   <i class="fas fa-angle-left right"></i>
@@ -332,14 +343,14 @@ if (!isset($_COOKIE['uid'])) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                  <i class="fa-solid fa-school-circle-check"></i>
+                  <a href="allStudent.php" class="nav-link">
+                    <i class="fa-solid fa-school-circle-check"></i>
                     <p> &nbsp; All Students</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                  <i class="fa-solid fa-plus"></i>
+                  <a href="addStudent.php" class="nav-link">
+                    <i class="fa-solid fa-plus"></i>
                     <p> &nbsp; Add Students</p>
                   </a>
                 </li>
@@ -358,7 +369,7 @@ if (!isset($_COOKIE['uid'])) {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-              <i class="nav-icon fa-solid fa-gear"></i>
+                <i class="nav-icon fa-solid fa-gear"></i>
                 <p>
                   SETTINGS
 
