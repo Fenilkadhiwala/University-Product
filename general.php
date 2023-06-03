@@ -57,7 +57,7 @@ class GeneralMethods
     }
 
 
-    public function insertData($dataArr, $keyArr, $arrValues, $tableName)
+    public function insertData($dataArr, $keyArr, $arrValues, $tableName, $location)
     {
         $columns = implode(",", $keyArr);
 
@@ -65,7 +65,7 @@ class GeneralMethods
         $quotedValues = array_map(function ($value) {
             return "'" . $value . "'";
         }, $arrValues);
-
+ 
         $values = implode(",", $quotedValues);
 
 
@@ -75,9 +75,11 @@ class GeneralMethods
         $result = mysqli_query($this->con, $query);
 
         if ($result) {
-            header("location:dashboard.php?err=succ");
+            header("location:$location?err=success");
+            
         } else {
-            header("location:dashboard.php?err=failed");
+            header("location:$location?err=failure");
+            
         }
     }
 

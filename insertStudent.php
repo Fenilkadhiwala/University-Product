@@ -5,6 +5,7 @@ include "general.php";
 $dataArr = $_POST;
 $tableName = "student";
 $dbName = "projects";
+$location = "allStudent.php";
 
 $keyToDelete = 'submit';
 
@@ -159,7 +160,7 @@ $arrValues["11"] = $img_new_name;
 $myObj1 = new GeneralMethods($dbName);
 
 
-$myObj1->insertData($dataArr, $keyArr, $arrValues, $tableName);
+$myObj1->insertData($dataArr, $keyArr, $arrValues, $tableName, $location);
 
 
 

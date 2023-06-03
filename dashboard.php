@@ -299,9 +299,24 @@ if (!isset($_COOKIE['uid'])) {
                 <i class="nav-icon fa-solid fa-chalkboard-user"></i>
                 <p>
                   FACULTIES
-
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="allFaculty.php" class="nav-link">
+                    <i class="fa-solid fa-school-circle-check"></i>
+                    <p> &nbsp; All Faculties</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="addFaculty.php" class="nav-link">
+                    <i class="fa-solid fa-plus"></i>
+                    <p> &nbsp; Add Faculties</p>
+                  </a>
+                </li>
+
+              </ul>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -485,7 +500,7 @@ if (!isset($_COOKIE['uid'])) {
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-12 connectedSortable">
+            <section class="col-lg-12 connectedSortable ">
               <!-- Custom tabs (Charts with tabs)-->
               <div class="card">
                 <div class="card-header">
