@@ -16,7 +16,11 @@ if (!isset($_COOKIE['uid'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Library Management System</title>
-
+  <style>
+    body{
+      overflow-x: hidden;
+    }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -438,7 +442,17 @@ if (!isset($_COOKIE['uid'])) {
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>Count</h3>
+                  <h3>
+
+                    <?php
+                    $query = "SELECT COUNT(*) as count FROM `faculty`";
+                    $result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_assoc($result);
+                    $count = $row['count'];
+                    echo "$count";
+
+                    ?>
+                  </h3>
 
                   <p>Active Faculties</p>
                 </div>
@@ -484,7 +498,16 @@ if (!isset($_COOKIE['uid'])) {
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>Count</h3>
+                  <h3>
+                    <?php
+                    $query = "SELECT COUNT(*) as count FROM `student`";
+                    $result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_assoc($result);
+                    $count = $row['count'];
+                    echo "$count";
+
+                    ?>
+                  </h3>
 
                   <p>Students</p>
                 </div>

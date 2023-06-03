@@ -443,7 +443,7 @@
                                             <label for="exampleInputEmail1">Department</label>
                                             <select name="dept" class="form-control">
                                                 <option value="">Select Department</option>
-                                                <option selected>Select department</option>
+                                                
                                                 <option value="CO">CO</option>
                                                 <option value="IT">IT</option>
                                                 <option value="ME">ME</option>
