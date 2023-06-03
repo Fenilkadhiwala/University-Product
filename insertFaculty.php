@@ -4,6 +4,7 @@ include "general.php";
 $dataArr = $_POST;
 $tableName = "faculty";
 $dbName = "projects";
+$location = "allFaculty.php";
 
 $keyToDelete = 'submit';
 
@@ -25,10 +26,10 @@ $arrValues = array_values($dataArr);
 // echo "<pre>";
 // print_r($_FILES['image']);
 
-$img_name = $_FILES['image']['name'];
-$img_size = $_FILES['image']['size'];
-$tmp_name = $_FILES['image']['tmp_name'];
-$error = $_FILES['image']['error'];
+$img_name = $_FILES['img']['name'];
+$img_size = $_FILES['img']['size'];
+$tmp_name = $_FILES['img']['tmp_name'];
+$error = $_FILES['img']['error'];
 
 if ($error === 0) {
     if ($img_size > 1250000) {
@@ -60,8 +61,8 @@ if ($error === 0) {
 
 
 
-$keyArr["6"] = "img";
-$arrValues["6"] = $img_new_name;
+$keyArr["5"] = "img";
+$arrValues["5"] = $img_new_name;
 
 // echo "<pre>";
 // print_r($keyArr);
@@ -75,7 +76,7 @@ $arrValues["6"] = $img_new_name;
 $myObj1 = new GeneralMethods($dbName);
 
 
-$myObj1->insertData($dataArr, $keyArr, $arrValues, $tableName);
+$myObj1->insertData($dataArr, $keyArr, $arrValues, $tableName, $location);
 
 
 

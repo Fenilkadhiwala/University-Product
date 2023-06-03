@@ -1,10 +1,41 @@
+<?php
+// if (!isset($_COOKIE['uid'])) {
+
+//     header('Location: index.php');
+//     exit();
+// }
+
+$lh = "localhost";
+$un = "root";
+$ps = "";
+$db = "projects";
+
+$con = new mysqli($lh, $un, $ps, $db);
+$uuid = $_GET['uid'];
+
+$query = "SELECT * FROM `faculty` WHERE uid=$uuid";
+
+$result = mysqli_query($con, $query);
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $name = $row['name'];
+    $email = $row['email'];
+    $contact = $row['contact'];
+    $dept = $row['dept'];
+    $pos = $row['pos'];
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | DataTables</title>
+    <title>Library Management System</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -14,16 +45,34 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-
-    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="dist/img/library.jpg" alt="AdminLTELogo" height="60" width="60">
+        </div>
+
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -31,7 +80,12 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-
+                <!-- <li class="nav-item d-none d-sm-inline-block">
+          <a href="index3.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Contact</a>
+        </li> -->
             </ul>
 
             <!-- Right navbar links -->
@@ -69,7 +123,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar"
+                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -86,7 +140,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar"
+                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -103,7 +157,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar"
+                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -154,7 +208,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
+                        role="button">
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
@@ -234,7 +289,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fa-solid fa-chalkboard-user"></i>
                                 <p>
                                     FACULTIES
@@ -250,7 +305,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="addFaculty.php" class="nav-link">
+                                    <a href="addFaculty.php" class="nav-link active">
                                         <i class="fa-solid fa-plus"></i>
                                         <p> &nbsp; Add Faculties</p>
                                     </a>
@@ -289,7 +344,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-graduation-cap"></i>
                                 <p>
                                     STUDENTS
@@ -298,7 +353,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="allStudent.php" class="nav-link active">
+                                    <a href="allStudent.php" class="nav-link">
                                         <i class="fa-solid fa-school-circle-check"></i>
                                         <p> &nbsp; All Students</p>
                                     </a>
@@ -312,7 +367,6 @@
 
                             </ul>
                         </li>
-
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -350,130 +404,122 @@
             <!-- /.sidebar -->
         </aside>
 
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
+            <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Student List</h1>
-                        </div>
+                            <h1 class="m-0">Add Faculty</h1>
+                        </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-
+                                <!-- <li class="breadcrumb-item"><a href="#">Home</a></li> -->
                                 <li class="breadcrumb-item active">Admin</li>
                             </ol>
-                        </div>
-                    </div>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
-            </section>
+            </div>
+            <!-- /.content-header -->
+
+
 
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
-
-                            <!-- /.card -->
-
-                            <div class="card">
+                        <!-- left column -->
+                        <div class="col-md-12">
+                            <div class="card card-primary">
                                 <div class="card-header">
-                                    <a href="addStudent.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i>
-                                        Add Student</a>
+                                    <h3 class="card-title">Faculty Form</h3>
                                 </div>
                                 <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>First Name</th>
-                                                <th>Middle Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Contact</th>
-                                                <th>Education</th>
-                                                <th>Course</th>
-                                                <th>Teacher</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $lh = "localhost";
-                                            $un = "root";
-                                            $ps = "";
-                                            $db = "projects";
-
-                                            $con = new mysqli($lh, $un, $ps, $db);
+                                <!-- form start -->
+                                <form method="post" action="modifyFaculty.php" enctype="multipart/form-data">
+                                    <input type="hidden" name="uuid" value=<?php echo "'$uuid'" ?>>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Name</label>
+                                            <input name="name" type="text" class="form-control" id="exampleInputEmail1"
+                                                placeholder="Enter Name" value=<?php echo " '$name' " ?>>
+                                        </div>
 
 
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email</label>
+                                            <input name="email" type="email" class="form-control"
+                                                id="exampleInputEmail1" placeholder="Enter email" value=<?php echo "'$email'" ?>>
+                                        </div>
 
-                                            $q2 = "SELECT * FROM `student`";
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Contact Number</label>
+                                            <input name="contact" type="text" class="form-control"
+                                                id="exampleInputEmail1" placeholder="Enter contact" value=<?php echo "' $contact'" ?>>
+                                        </div>
 
-                                            $result = mysqli_query($con, $q2);
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Department</label>
+                                            <select name="dept" class="form-control">
+                                                <option selected>
+                                                    <?php echo "$dept" ?>
+                                                </option>
+                                                <option value="CO">CO</option>
+                                                <option value="IT">IT</option>
+                                                <option value="ME">ME</option>
+                                                <option value="CE">CE</option>
+                                                <option value="CH">CH</option>
+                                                <option value="EC">EC</option>
+                                                <option value="TX">TX</option>
+                                                <option value="IC">IC</option>
+                                            </select>
 
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                $id = $row['uid'];
-                                                $fname = $row['fname'];
-                                                $mname = $row['mname'];
-                                                $lname = $row['lname'];
-                                                $email = $row['email'];
-                                                $scontact = $row['scontact'];
-                                                $education = $row['education'];
-                                                $course = $row['course'];
-                                                $teacher = $row['teacher'];
+                                        </div>
 
-                                                echo '<tr>
-                                                        <td>' . $fname . '</td>
-                                                        <td>' . $mname . '</td>
-                                                        <td>' . $lname . '</td>
-                                                        <td>' . $email . '</td>
-                                                        <td>' . $scontact . '</td>
-                                                        <td>' . $education . '</td>
-                                                        <td>' . $course . '</td>
-                                                        <td>' . $teacher . '</td>
-                                                        <td><a href="modifyFaculty.php?uid=' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a> <a href="delete.php?uid=' . $id . '"><i class="fa-solid fa-trash"></i></a></td>
-                                                    </tr>';
-                                            }
-                                            ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>First Name</th>
-                                                <th>Middle Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Contact</th>
-                                                <th>Education</th>
-                                                <th>Course</th>
-                                                <th>Teacher</th>
-                                                <th>Action</th>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Designation</label>
+                                            <select name="pos" class="form-control">
+                                                <option selected>
+                                                    <?php echo "$pos" ?>
+                                                </option>
+                                                <option value="Dr.">Dr.</option>
+                                                <option value="Prof.">Prof.</option>
+                                                <option value="Ass Prof.">Ass Prof.</option>
+                                                <option value="Mr.">Mr.</option>
+                                                <option value="Ms.">Ms.</option>
+                                                <option value="Mrs.">Mrs.</option>
 
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
+                                            </select>
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer">
+                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
                             </div>
-                            <!-- /.card -->
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.2.0
+            <strong>Copyright &copy; 2014-2021 <a href="https://github.com/Fenilkadhiwala">Fenil</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+
             </div>
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
         </footer>
 
         <!-- Control Sidebar -->
@@ -484,47 +530,40 @@
     </div>
     <!-- ./wrapper -->
 
-
-
-
-
+    <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstra>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTablPlugins -->
-    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="plugins/jszip/jszip.min.js"></script>
-    <script src="plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- ChartJS -->
+    <script src="plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="plugins/moment/moment.min.js"></script>
+    <script src="plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
+    <script src="dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="dist/js/pages/dashboard.js"></script>
 </body>
 
 </html>

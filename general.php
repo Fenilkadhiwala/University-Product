@@ -43,7 +43,7 @@ class GeneralMethods
 
         $result = mysqli_query($this->con, $query);
 
-        $row = mysqli_fetch_assoc($result);
+        $row = mysqli_fetch_assoc($result); 
 
         if ($row) {
             $uid = $row['uid'];
@@ -65,7 +65,7 @@ class GeneralMethods
         $quotedValues = array_map(function ($value) {
             return "'" . $value . "'";
         }, $arrValues);
- 
+
         $values = implode(",", $quotedValues);
 
 
@@ -76,14 +76,14 @@ class GeneralMethods
 
         if ($result) {
             header("location:$location?err=success");
-            
+
         } else {
             header("location:$location?err=failure");
-            
+
         }
     }
 
-    public function updateData($dataArr, $keyArr, $arrValues, $tableName, $uid)
+    public function updateData($dataArr, $keyArr, $arrValues, $tableName, $uid, $location)
     {
         $columns = implode(",", $keyArr);
 
@@ -114,22 +114,22 @@ class GeneralMethods
         $result = mysqli_query($this->con, $query);
 
         if ($result) {
-            header("location:dashboard.php?err=succ");
+            header("location:$location?err=succ");
         } else {
-            header("location:dashboard.php?err=failed");
+            header("location:$location?err=failed");
         }
     }
 
-    public function deleteData($dataArr, $keyArr, $arrValues, $tableName, $uid)
+    public function deleteData($tableName, $uid, $location)
     {
         $query = "DELETE FROM $tableName WHERE uid=$uid";
 
         $result = mysqli_query($this->con, $query);
 
         if ($result) {
-            header("location:dashboard.php?err=deleted");
+            header("location:$location?err=deleted");
         } else {
-            header("location:dashboard.php?err=NotDeleted");
+            header("location:$location?err=NotDeleted");
         }
     }
 

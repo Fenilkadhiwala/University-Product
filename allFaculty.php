@@ -234,7 +234,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fa-solid fa-chalkboard-user"></i>
                                 <p>
                                     FACULTIES
@@ -244,7 +244,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="allFaculty.php" class="nav-link">
+                                    <a href="allFaculty.php" class="nav-link active">
                                         <i class="fa-solid fa-school-circle-check"></i>
                                         <p> &nbsp; All Faculties</p>
                                     </a>
@@ -289,7 +289,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-graduation-cap"></i>
                                 <p>
                                     STUDENTS
@@ -298,7 +298,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="allStudent.php" class="nav-link active">
+                                    <a href="allStudent.php" class="nav-link">
                                         <i class="fa-solid fa-school-circle-check"></i>
                                         <p> &nbsp; All Students</p>
                                     </a>
@@ -358,7 +358,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Student List</h1>
+                            <h1>Faculty List</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -380,22 +380,20 @@
 
                             <div class="card">
                                 <div class="card-header">
-                                    <a href="addStudent.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i>
-                                        Add Student</a>
+                                    <a href="addFaculty.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i>
+                                        Add Faculty</a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped text-center">
                                         <thead>
                                             <tr>
-                                                <th>First Name</th>
-                                                <th>Middle Name</th>
-                                                <th>Last Name</th>
+                                                <th>Designation</th>
+                                                <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Contact</th>
-                                                <th>Education</th>
-                                                <th>Course</th>
-                                                <th>Teacher</th>
+                                                <th>Department</th>
+                                                <th>Photo</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -410,47 +408,47 @@
 
 
 
-                                            $q2 = "SELECT * FROM `student`";
+                                            $q2 = "SELECT * FROM `faculty`";
 
                                             $result = mysqli_query($con, $q2);
 
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 $id = $row['uid'];
-                                                $fname = $row['fname'];
-                                                $mname = $row['mname'];
-                                                $lname = $row['lname'];
+                                                $pos = $row['pos'];
+                                                $name = $row['name'];
                                                 $email = $row['email'];
-                                                $scontact = $row['scontact'];
-                                                $education = $row['education'];
-                                                $course = $row['course'];
-                                                $teacher = $row['teacher'];
+                                                $contact = $row['contact'];
+                                                $dept = $row['dept'];
+                                                $img = $row['img'];
 
                                                 echo '<tr>
-                                                        <td>' . $fname . '</td>
-                                                        <td>' . $mname . '</td>
-                                                        <td>' . $lname . '</td>
+                                                        <td>' . $pos . '</td>
+                                                        <td>' . $name . '</td>
                                                         <td>' . $email . '</td>
-                                                        <td>' . $scontact . '</td>
-                                                        <td>' . $education . '</td>
-                                                        <td>' . $course . '</td>
-                                                        <td>' . $teacher . '</td>
-                                                        <td><a href="modifyFaculty.php?uid=' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a> <a href="delete.php?uid=' . $id . '"><i class="fa-solid fa-trash"></i></a></td>
-                                                    </tr>';
+                                                        <td>' . $contact . '</td>
+                                                        <td>' . $dept . '</td>'; ?>
+
+                                                <td>
+                                                    <img src="uploads/<?= $row['img'] ?>" alt="Image" width="100"
+                                                        height="100">
+                                                </td>
+                                                <?php
+                                                echo '
+                                                <td?><td><a href="updateFaculty.php?uid=' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a> <a style="margin-left:14px;" href="deleteFaculty.php?uid=' . $id . '"><i class="fa-solid fa-trash"></i></a></td></td>
+                                                </tr>
+                                                ';
                                             }
                                             ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>First Name</th>
-                                                <th>Middle Name</th>
-                                                <th>Last Name</th>
+                                                <th>Designation</th>
+                                                <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Contact</th>
-                                                <th>Education</th>
-                                                <th>Course</th>
-                                                <th>Teacher</th>
+                                                <th>Department</th>
+                                                <th>Photo</th>
                                                 <th>Action</th>
-
                                             </tr>
                                         </tfoot>
                                     </table>

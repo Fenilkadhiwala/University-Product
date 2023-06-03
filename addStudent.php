@@ -319,7 +319,23 @@
                                     FACULTIES
 
                                 </p>
+                                <i class="fas fa-angle-left right"></i>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="allFaculty.php" class="nav-link">
+                                        <i class="fa-solid fa-school-circle-check"></i>
+                                        <p> &nbsp; All Faculties</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addFaculty.php" class="nav-link">
+                                        <i class="fa-solid fa-plus"></i>
+                                        <p> &nbsp; Add Faculties</p>
+                                    </a>
+                                </li>
+
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
