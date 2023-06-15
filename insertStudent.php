@@ -68,8 +68,8 @@ if ($error === 0) {
 
 
 
-$keyArr["9"] = "simg";
-$arrValues["9"] = $img_new_name;
+$keyArr["10"] = "simg";
+$arrValues["10"] = $img_new_name;
 
 
 $img_name = $_FILES['saadhar']['name'];
@@ -107,8 +107,8 @@ if ($error === 0) {
 
 
 
-$keyArr["10"] = "saadhar";
-$arrValues["10"] = $img_new_name;
+$keyArr["11"] = "saadhar";
+$arrValues["11"] = $img_new_name;
 
 
 $img_name = $_FILES['smarksheet']['name'];
@@ -146,8 +146,8 @@ if ($error === 0) {
 
 
 
-$keyArr["11"] = "smarksheet";
-$arrValues["11"] = $img_new_name;
+$keyArr["12"] = "smarksheet";
+$arrValues["12"] = $img_new_name;
 
 // echo "<pre>";
 // print_r($keyArr);

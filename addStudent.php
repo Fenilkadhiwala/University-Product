@@ -322,7 +322,7 @@
                             <a href="addCourse.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-user"></i>
                                 <p>
-                                COURSE MASTER
+                                    COURSE MASTER
 
                                 </p>
                             </a>
@@ -511,6 +511,20 @@
                                             </select>
 
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Duration</label>
+                                            <select name="duration" class="form-control">
+                                                <option value="">Select Duration</option>
+                                                <option value="1-2 Months">1-2 Months</option>
+                                                <option value="2-3 Months">2-3 Months</option>
+                                                <option value="3-4 Months">3-4 Months</option>
+                                                <option value="4-5 Months">4-5 Months</option>
+                                                <option value="More Than 6 Months">More Than 6 Months</option>
+                                            </select>
+
+                                        </div>
+
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Teacher</label>

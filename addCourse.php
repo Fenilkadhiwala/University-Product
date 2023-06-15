@@ -4,7 +4,37 @@
 //     header('Location: index.php');
 //     exit();
 // }
+if (isset($_GET['err']) && $_GET['success'] == "succ") {
+    require __DIR__ . '/vendor/autoload.php'; // Include the Twilio PHP library
 
+    // Your Twilio account SID and auth token
+    $accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
+    $authToken = 'YOUR_TWILIO_AUTH_TOKEN';
+
+    // Creating a new Twilio client
+    $client = new Twilio\Rest\Client($accountSid, $authToken);
+
+    // Student's mobile number
+    $studentMobileNumber = 'STUDENT_MOBILE_NUMBER';
+
+    // Message to be sent
+    $message = "Dear student, your registration was successful. Welcome to our program!";
+
+    try {
+        // Send SMS
+        $message = $client->messages->create(
+            $studentMobileNumber,
+            [
+                'from' => 'YOUR_TWILIO_PHONE_NUMBER',
+                'body' => $message
+            ]
+        );
+
+        echo "SMS sent successfully. SID: " . $message->sid;
+    } catch (Exception $e) {
+        echo "Error sending SMS: " . $e->getMessage();
+    }
+}
 
 ?>
 
@@ -458,7 +488,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -506,7 +536,7 @@
                                                         <td>' . $duration . '</td>
                                                         '; ?>
 
-                                                
+
                                                 <?php
                                                 echo '
                                                 <td?><td><a href="updateCourse.php?uid=' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a> <a style="margin-left:6px;" href="deleteCourse.php?uid=' . $id . '"><i class="fa-solid fa-trash"></i></a></td></td>
