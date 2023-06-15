@@ -314,10 +314,10 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="addCourse.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-user"></i>
                                 <p>
-                                    MEMBERS
+                                COURSE MASTER
 
                                 </p>
                             </a>

@@ -17,7 +17,7 @@ if (!isset($_COOKIE['uid'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Library Management System</title>
   <style>
-    body{
+    body {
       overflow-x: hidden;
     }
   </style>
@@ -50,29 +50,36 @@ if (!isset($_COOKIE['uid'])) {
     window.onload = function () {
       // Sample data for the bar chart
       var dataPoints = [
-        { label: "CO", y: 10 },
-        { label: "CI", y: 5 },
-        { label: "ME", y: 8 },
-        { label: "CH", y: 12 },
-        { label: "IT", y: 7 },
-        { label: "TX", y: 5 },
-        { label: "EC", y: 2 },
-        { label: "IC", y: 19 },
-        { label: "ARCH", y: 11 }
+        { label: "JAN", y: 10 },
+        { label: "FEB", y: 7 },
+        { label: "MAR", y: 23 },
+        { label: "APR", y: 16 },
+        { label: "MAY", y: 11 },
+        { label: "JUNE", y: 9 },
+        { label: "JULY", y: 23 },
+        { label: "AUG", y: 10 },
+        { label: "SEPT", y: 6 },
+        { label: "OCT", y: 12 },
+        { label: "NOV", y: 18 },
+        { label: "DEC", y: 15 },
+
+
       ];
 
       // Create a new bar chart
-      var chart = new CanvasJS.Chart("facChart", {
+      var chart = new CanvasJS.Chart("studentChart", {
         theme: "light2",
         animationEnabled: true,
-        title: {
-          text: "Faculties"
-        },
+
         axisY: {
-          title: "Quantity"
+          title: "Students"
         },
+        axisX: {
+          title: "Months"
+        },
+
         data: [{
-          type: "column",
+          type: "line",
           dataPoints: dataPoints
         }]
       });
@@ -343,10 +350,10 @@ if (!isset($_COOKIE['uid'])) {
 
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="addCourse.php" class="nav-link">
                 <i class="nav-icon fa-solid fa-user"></i>
                 <p>
-                  MEMBERS
+                  COURSE MASTER
 
                 </p>
               </a>
@@ -529,12 +536,12 @@ if (!isset($_COOKIE['uid'])) {
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="fas fa-chart-pie mr-1"></i>
-                    Faculties Per Department
+                    Student Admission Per Month
                   </h3>
 
                 </div><!-- /.card-header -->
-                <div class="card-body" style="height: 350px;">
-                  <div class="tab-content p-0" id="facChart" style="height:300px; width:100%; ">
+                <div class="card-body" style="height: 200px;">
+                  <div class="tab-content p-0" id="studentChart" style="height:170px; width:100%; ">
 
                   </div>
                 </div><!-- /.card-body -->

@@ -5,6 +5,24 @@
 //     exit();
 // }
 
+$lh = "localhost";
+$un = "root";
+$ps = "";
+$db = "projects";
+
+$con = new mysqli($lh, $un, $ps, $db);
+$uuid = $_GET['uid'];
+
+$query = "SELECT * FROM `course` WHERE uid=$uuid";
+
+$result = mysqli_query($con, $query);
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $course = $row['cname'];
+    $duration = $row['duration'];
+
+}
+
 
 ?>
 
@@ -42,11 +60,6 @@
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script>
-
-    </script>
 
 </head>
 
@@ -274,7 +287,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fa-solid fa-chalkboard-user"></i>
                                 <p>
                                     FACULTIES
@@ -290,7 +303,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="addFaculty.php" class="nav-link">
+                                    <a href="addFaculty.php" class="nav-link active">
                                         <i class="fa-solid fa-plus"></i>
                                         <p> &nbsp; Add Faculties</p>
                                     </a>
@@ -319,17 +332,17 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="addCourse.php" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-user"></i>
                                 <p>
-                                COURSE MASTER
+                                    MEMBERS
 
                                 </p>
                             </a>
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-graduation-cap"></i>
                                 <p>
                                     STUDENTS
@@ -344,7 +357,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="addStudent.php" class="nav-link active">
+                                    <a href="addStudent.php" class="nav-link">
                                         <i class="fa-solid fa-plus"></i>
                                         <p> &nbsp; Add Students</p>
                                     </a>
@@ -396,7 +409,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Add Student</h1>
+                            <h1 class="m-0">Add Faculty</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -411,7 +424,6 @@
 
 
 
-
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
@@ -420,162 +432,50 @@
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Student Registration</h3>
+                                    <h3 class="card-title">Add Course</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form method="post" action="insertStudent.php" enctype="multipart/form-data">
+                                <form method="post" action="modifyCourse.php" enctype="multipart/form-data">
                                     <div class="card-body">
+                                        <input type="hidden" name="uuid" value=<?php echo "'$uuid'" ?>>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">First Name</label>
-                                            <input name="fname" type="text" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter first name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Middle Name</label>
-                                            <input name="mname" type="text" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter middle name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Last Name</label>
-                                            <input name="lname" type="text" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter last name">
+                                            <label for="exampleInputEmail1">Course Name</label>
+                                            <input name="cname" type="text" class="form-control" id="exampleInputEmail1"
+                                                placeholder="Enter course name" value="<?php echo " $course " ?>">
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email</label>
-                                            <input name="email" type="email" class="form-control"
-                                                id="exampleInputEmail1" placeholder="Enter email">
-                                        </div>
+
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Student's Contact Number</label>
-                                            <input name="scontact" type="text" class="form-control"
-                                                id="exampleInputEmail1" placeholder="Enter student's contact">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Parent's Contact Number</label>
-                                            <input name="pcontact" type="text" class="form-control"
-                                                id="exampleInputEmail1" placeholder="Enter parent's contact">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Education</label>
-                                            <select name="education" class="form-control">
-                                                <option value="">Select Education Level</option>
-                                                <option value="ssc">SSC</option>
-                                                <option value="hsc">HSC</option>
-                                                <option value="undergraduate">Undergraduate</option>
-                                                <option value="postgraduate">Postgraduate</option>
-                                                <option value="doctorate">Doctorate</option>
-                                                <option value="vocational">Vocational</option>
+                                            <label for="exampleInputEmail1">Duration</label>
+                                            <select name="duration" class="form-control">
+                                                <option selected>
+                                                    <?php echo "$duration" ?>
+                                                </option>
+                                                <option value="1-2 Months">1-2 Months</option>
+                                                <option value="2-3 Months">2-3 Months</option>
+                                                <option value="3-4 Months">3-4 Months</option>
+                                                <option value="4-5 Months">4-5 Months</option>
+                                                <option value="More Than 6 Months">More Than 6 Months</option>
                                             </select>
 
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Course</label>
-                                            <select name="course" class="form-control">
-                                                <option value="">Select Course</option>
 
-                                                <?php
+                                        <!-- /.card-body -->
 
-                                                $myLh = "localhost";
-                                                $myUn = "root";
-                                                $myPs = "";
-                                                $myDb = "projects";
-
-                                                $myCon = new mysqli($myLh, $myUn, $myPs, $myDb);
-
-                                                // $uid = $_COOKIE['uid'];
-                                                
-                                                $myQ = "SELECT * FROM `course`";
-
-                                                $myResult = mysqli_query($myCon, $myQ);
-
-
-                                                while ($myRow = mysqli_fetch_assoc($myResult)) {
-
-                                                    $course = $myRow['cname'];
-
-                                                    echo '
-                                                    <option value=' . $course . '>' . $course . '</option>
-                                                    ';
-
-
-
-
-                                                }
-                                                ?>
-
-                                            </select>
-
+                                        <div class="card-footer">
+                                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Teacher</label>
-                                            <select name="teacher" class="form-control">
-                                                <option value="">Select Teacher</option>
-                                                <option value="Kalpesh Sir">Kalpesh Sir</option>
-                                                <option value="Huzaifa Rapidwala">Huzaifa Rapidwala</option>
-
-
-                                            </select>
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Passport Size Photo</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input name="simg" type="file" class="custom-file-input"
-                                                        id="exampleInputFile">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        photo</label>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Aadhar Card</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input name="saadhar" type="file" class="custom-file-input"
-                                                        id="exampleInputFile">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        file</label>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Recent Mark sheet</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input name="smarksheet" type="file" class="custom-file-input"
-                                                        id="exampleInputFile">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        file</label>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-body -->
-
-                                    <div class="card-footer">
-                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
