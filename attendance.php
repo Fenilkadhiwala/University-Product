@@ -1,44 +1,3 @@
-<?php
-// if (!isset($_COOKIE['uid'])) {
-
-//     header('Location: index.php');
-//     exit();
-// }
-// if (isset($_GET['err']) && $_GET['err'] == "success") {
-//     require __DIR__ . '/vendor/autoload.php'; // Include the Twilio PHP library
-
-//     // Your Twilio account SID and auth token
-//     $accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
-//     $authToken = 'YOUR_TWILIO_AUTH_TOKEN';
-
-//     // Creating a new Twilio client
-//     $client = new Twilio\Rest\Client($accountSid, $authToken);
-
-//     // Student's mobile number
-//     $studentMobileNumber = 'STUDENT_MOBILE_NUMBER';
-
-//     // Message to be sent
-//     $message = "Dear student, your registration was successful. Welcome to our program!";
-
-//     try {
-//         // Send SMS
-//         $message = $client->messages->create(
-//             $studentMobileNumber,
-//             [
-//                 'from' => 'YOUR_TWILIO_PHONE_NUMBER',
-//                 'body' => $message
-//             ]
-//         );
-
-//         echo "SMS sent successfully. SID: " . $message->sid;
-//     } catch (Exception $e) {
-//         echo "Error sending SMS: " . $e->getMessage();
-//     }
-// }
-
-// ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,6 +36,21 @@
     <script>
 
     </script>
+    <style>
+        .current-day {
+            background-color: #000000;
+            color: white;
+            font-weight: bolder;
+        }
+
+        .current-day:hover {
+            cursor: pointer;
+        }
+
+        #myTab {
+            background-color: #ffffff;
+        }
+    </style>
 
 </head>
 
@@ -329,13 +303,23 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="attendance.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-book"></i>
                                 <p>
-                                    ADD BOOKS
+                                    ATTENDANCE
                                     <span class="right badge badge-danger">New</span>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa-solid fa-school-circle-check"></i>
+                                        <p> &nbsp; ATTENDANCE SHEET</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -349,7 +333,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-user"></i>
                                 <p>
                                     COURSE MASTER
@@ -426,7 +410,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Courses</h1>
+                            <h1 class="m-0">Calendar</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -443,128 +427,35 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
+                <div class="container mt-4">
                     <div class="row">
-                        <!-- left column -->
-                        <div class="col-md-12">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Add Course</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <!-- form start -->
-                                <form method="post" action="insertCourse.php" enctype="multipart/form-data">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Course Name</label>
-                                            <input name="cname" type="text" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter course name">
-                                        </div>
+                        <div class="col">
 
-
-
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Duration</label>
-                                            <select name="duration" class="form-control">
-                                                <option value="">Select Duration</option>
-                                                <option value="1-2 Months">1-2 Months</option>
-                                                <option value="2-3 Months">2-3 Months</option>
-                                                <option value="3-4 Months">3-4 Months</option>
-                                                <option value="4-5 Months">4-5 Months</option>
-                                                <option value="More Than 6 Months">More Than 6 Months</option>
-                                            </select>
-
-                                        </div>
-
-
-                                        <!-- /.card-body -->
-
-                                        <div class="card-footer">
-                                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                </form>
+                            <h3 id="current-month"></h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-center" id="myTab">
+                                    <thead style="background-color: #272727; color: white; font-weight:bolder">
+                                        <tr>
+                                            <th>Sun</th>
+                                            <th>Mon</th>
+                                            <th>Tue</th>
+                                            <th>Wed</th>
+                                            <th>Thu</th>
+                                            <th>Fri</th>
+                                            <th>Sat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="calendar-body" style="background-color: #c1c2c2;font-weight:bolder">
+                                        <!-- Calendar days will be dynamically added here -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </section>
 
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-
-                            <!-- /.card -->
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Previously Added Courses</h5>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped text-center">
-                                        <thead>
-                                            <tr>
-                                                <th>Course Name</th>
-                                                <th>Duration</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $lh = "localhost";
-                                            $un = "root";
-                                            $ps = "";
-                                            $db = "projects";
-
-                                            $con = new mysqli($lh, $un, $ps, $db);
-
-
-
-                                            $q2 = "SELECT * FROM `course`";
-
-                                            $result = mysqli_query($con, $q2);
-
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                $id = $row['uid'];
-                                                $course = $row['cname'];
-                                                $duration = $row['duration'];
-
-
-                                                echo '<tr>
-                                                        <td>' . $course . '</td>
-                                                        <td>' . $duration . '</td>
-                                                        '; ?>
-
-
-                                                <?php
-                                                echo '
-                                                <td?><td><a href="updateCourse.php?uid=' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a> <a style="margin-left:6px;" href="deleteCourse.php?uid=' . $id . '"><i class="fa-solid fa-trash"></i></a></td></td>
-                                                </tr>
-                                                ';
-                                            }
-                                            ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Course Name</th>
-                                                <th>Duration</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -618,5 +509,86 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
 </body>
+<script>
+    const currentDate = new Date();
+
+    // Get the first day of the current month
+    const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+
+    // Get the last day of the current month
+    const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+
+    // Generate calendar days
+    function generateCalendar() {
+        const calendarBody = document.getElementById('calendar-body');
+        let date = 1;
+
+        // Loop through each row
+        for (let i = 0; i < 6; i++) {
+            const row = document.createElement('tr');
+
+            // Loop through each day of the week
+            for (let j = 0; j < 7; j++) {
+                if (i === 0 && j < firstDay.getDay()) {
+                    // Add empty cells before the first day of the month
+                    const cell = document.createElement('td');
+                    row.appendChild(cell);
+                } else if (date > lastDay.getDate()) {
+                    // Stop adding cells if we have reached the end of the month
+                    break;
+                } else {
+                    // Create a cell for each day
+                    const cell = document.createElement('td');
+                    cell.textContent = date;
+
+                    if (date === currentDate.getDate()) {
+                        // Highlight the current day
+                        cell.classList.add('current-day');
+                    }
+
+                    // Add a click event listener to each cell
+                    cell.addEventListener('click', function () {
+                        const selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), this.textContent);
+                        redirectToPage(selectedDate);
+                    });
+
+                    cell.classList.add('clickable');
+                    row.appendChild(cell);
+                    date++;
+                }
+            }
+
+            calendarBody.appendChild(row);
+        }
+    }
+
+    function displayCurrentMonth() {
+        const months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        const currentMonth = months[currentDate.getMonth()];
+        const currentYear = currentDate.getFullYear();
+        const currentMonthHeading = document.getElementById('current-month');
+        currentMonthHeading.innerHTML = `${currentMonth} ${currentYear}`;
+    }
+
+    // Function to redirect to a specific page
+    function redirectToPage(date) {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+
+        // Construct the URL with the selected date as a query parameter
+        const pageURL = `present.php?date=${year}-${month}-${day}`;
+
+        // Redirect the user to the date.php page
+        window.location.href = pageURL;
+    }
+
+    // Call the generateCalendar function to create the calendar
+    generateCalendar();
+    displayCurrentMonth();
+</script>
 
 </html>

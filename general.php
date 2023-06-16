@@ -115,7 +115,7 @@ class GeneralMethods
         $result = mysqli_query($this->con, $query);
 
         if ($result) {
-            header("location:$location?err=succ");
+            header("location:$location?err=success");
         } else {
             header("location:$location?err=failed");
         }

@@ -330,13 +330,29 @@ if (!isset($_COOKIE['uid'])) {
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa-solid fa-book"></i>
-                <p>
-                  ADD BOOKS
-                  <span class="right badge badge-danger">New</span>
+              <a href="attendance.php" class="nav-link">
+              <i class="nav-icon fa-solid fa-book"></i>
+              <p>
+                  ATTENDANCE
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="attendance.php" class="nav-link">
+                    <i class="fa-solid fa-school-circle-check"></i>
+                    <p> &nbsp; TAKE ATTENDANCE</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa-solid fa-school-circle-check"></i>
+                    <p> &nbsp; ATTENDANCE SHEET</p>
+                  </a>
+                </li>
+
+
+              </ul>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -475,9 +491,18 @@ if (!isset($_COOKIE['uid'])) {
               <div class="small-box bg-success">
                 <div class="inner">
                   <!-- <h3>53<sup style="font-size: 20px">%</sup></h3> -->
-                  <h3>Count</h3>
+                  <h3>
+                    <?php
+                    $query = "SELECT COUNT(*) as count FROM `course`";
+                    $result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_assoc($result);
+                    $count = $row['count'];
+                    echo "$count";
 
-                  <p>Total Books</p>
+                    ?>
+                  </h3>
+
+                  <p>Currently Available Courses</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
