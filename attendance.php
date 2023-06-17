@@ -289,9 +289,8 @@
                                 <i class="nav-icon fa-solid fa-chalkboard-user"></i>
                                 <p>
                                     FACULTIES
-
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
-                                <i class="fas fa-angle-left right"></i>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -310,17 +309,23 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="attendance.php" class="nav-link">
+                            <a href="attendance.php" class="nav-link active">
                                 <i class="nav-icon fa-solid fa-book"></i>
                                 <p>
                                     ATTENDANCE
-                                    <span class="right badge badge-danger">New</span>
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa-solid fa-school-circle-check"></i>
+                                    <a href="attendance.php" class="nav-link active">
+                                        <i class="fa-solid fa-clipboard-user"></i>
+                                        <p> &nbsp; TAKE ATTENDANCE</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="attendanceSheet.php" class="nav-link">
+                                        <i class="fa-solid fa-sheet-plastic"></i>
                                         <p> &nbsp; ATTENDANCE SHEET</p>
                                     </a>
                                 </li>
@@ -328,19 +333,9 @@
 
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-book-open"></i>
-                                <p>
-                                    ISSUE BOOKS
 
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-
-                        </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="addCourse.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-user"></i>
                                 <p>
                                     COURSE MASTER

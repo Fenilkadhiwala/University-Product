@@ -269,7 +269,7 @@ if (!isset($_COOKIE['uid'])) {
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="dashboard.php" class="nav-link active">
+                            <a href="dashboard.php" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     DASHBOARD
@@ -303,7 +303,7 @@ if (!isset($_COOKIE['uid'])) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="attendance.php" class="nav-link">
+                            <a href="attendance.php" class="nav-link active">
                                 <i class="nav-icon fa-solid fa-book"></i>
                                 <p>
                                     ATTENDANCE
@@ -313,13 +313,13 @@ if (!isset($_COOKIE['uid'])) {
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="attendance.php" class="nav-link">
-                                        <i class="fa-solid fa-school-circle-check"></i>
+                                        <i class="fa-solid fa-clipboard-user"></i>
                                         <p> &nbsp; TAKE ATTENDANCE</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="attendanceSheet.php" class="nav-link">
-                                        <i class="fa-solid fa-school-circle-check"></i>
+                                    <a href="attendanceSheet.php" class="nav-link active">
+                                        <i class="fa-solid fa-sheet-plastic"></i>
                                         <p> &nbsp; ATTENDANCE SHEET</p>
                                     </a>
                                 </li>
@@ -327,17 +327,7 @@ if (!isset($_COOKIE['uid'])) {
 
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-book-open"></i>
-                                <p>
-                                    ISSUE BOOKS
 
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-
-                        </li>
                         <li class="nav-item">
                             <a href="addCourse.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-user"></i>
@@ -404,7 +394,6 @@ if (!isset($_COOKIE['uid'])) {
             </li> -->
 
                 </nav>
-                <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
@@ -577,7 +566,8 @@ if (!isset($_COOKIE['uid'])) {
 
                                             <?php
                                         } else {
-                                            echo "<br>";
+                                            
+                                            echo "$attendanceDate";
                                             echo "<h5 style='color:red;'>Attendance Has Not Marked Yet For This Date</h5><br>";
 
 

@@ -1,5 +1,7 @@
 <?php
-if (!isset($_COOKIE['uid'])) {
+session_start();
+
+if (!isset($_SESSION['uid'])) {
 
   header('Location: index.php');
   exit();
@@ -79,7 +81,7 @@ if (!isset($_COOKIE['uid'])) {
         },
 
         data: [{
-          type: "line",
+          type: "area",
           dataPoints: dataPoints
         }]
       });
@@ -120,6 +122,7 @@ if (!isset($_COOKIE['uid'])) {
           <a class="nav-link" data-widget="navbar-search" href="#" role="button">
             <i class="fas fa-search"></i>
           </a>
+
           <div class="navbar-search-block">
             <form class="form-inline">
               <div class="input-group input-group-sm">
@@ -228,8 +231,8 @@ if (!isset($_COOKIE['uid'])) {
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
+          <a class="nav-link" href="logout.php">
+            <i class="fa-solid fa-power-off"></i>
           </a>
         </li>
       </ul>
@@ -340,13 +343,13 @@ if (!isset($_COOKIE['uid'])) {
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="attendance.php" class="nav-link">
-                    <i class="fa-solid fa-school-circle-check"></i>
+                    <i class="fa-solid fa-clipboard-user"></i>
                     <p> &nbsp; TAKE ATTENDANCE</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="attendanceSheet.php" class="nav-link">
-                    <i class="fa-solid fa-school-circle-check"></i>
+                    <i class="fa-solid fa-sheet-plastic"></i>
                     <p> &nbsp; ATTENDANCE SHEET</p>
                   </a>
                 </li>
@@ -354,17 +357,7 @@ if (!isset($_COOKIE['uid'])) {
 
               </ul>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa-solid fa-book-open"></i>
-                <p>
-                  ISSUE BOOKS
 
-                  <span class="badge badge-info right">6</span>
-                </p>
-              </a>
-
-            </li>
             <li class="nav-item">
               <a href="addCourse.php" class="nav-link">
                 <i class="nav-icon fa-solid fa-user"></i>
@@ -515,7 +508,7 @@ if (!isset($_COOKIE['uid'])) {
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>Count</h3>
+                  <h3>6</h3>
 
                   <p>Borrowed Books</p>
                 </div>
@@ -565,8 +558,8 @@ if (!isset($_COOKIE['uid'])) {
                   </h3>
 
                 </div><!-- /.card-header -->
-                <div class="card-body" style="height: 200px;">
-                  <div class="tab-content p-0" id="studentChart" style="height:170px; width:100%; ">
+                <div class="card-body" style="height: 250px;">
+                  <div class="tab-content p-0" id="studentChart" style="height:230px; width:100%; ">
 
                   </div>
                 </div><!-- /.card-body -->
@@ -586,7 +579,7 @@ if (!isset($_COOKIE['uid'])) {
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
+    <footer class="main-footer text-center">
       <strong>Copyright &copy; 2014-2021 <a href="https://github.com/Fenilkadhiwala">Fenil</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">

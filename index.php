@@ -1,5 +1,7 @@
 <?php
-if (isset($_COOKIE['uid'])) {
+session_start();
+
+if (isset($_SESSION['uid'])) {
 
     header('Location: dashboard.php');
     exit();

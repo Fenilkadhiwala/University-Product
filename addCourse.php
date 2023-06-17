@@ -289,120 +289,124 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="dashboard.php" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    DASHBOARD
+            <li class="nav-item menu-open">
+              <a href="dashboard.php" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  DASHBOARD
 
-                                </p>
-                            </a>
+                </p>
+              </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-chalkboard-user"></i>
-                                <p>
-                                    FACULTIES
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa-solid fa-chalkboard-user"></i>
+                <p>
+                  FACULTIES
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="allFaculty.php" class="nav-link">
+                    <i class="fa-solid fa-school-circle-check"></i>
+                    <p> &nbsp; All Faculties</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="addFaculty.php" class="nav-link">
+                    <i class="fa-solid fa-plus"></i>
+                    <p> &nbsp; Add Faculties</p>
+                  </a>
+                </li>
 
-                                </p>
-                                <i class="fas fa-angle-left right"></i>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="allFaculty.php" class="nav-link">
-                                        <i class="fa-solid fa-school-circle-check"></i>
-                                        <p> &nbsp; All Faculties</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="addFaculty.php" class="nav-link">
-                                        <i class="fa-solid fa-plus"></i>
-                                        <p> &nbsp; Add Faculties</p>
-                                    </a>
-                                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="attendance.php" class="nav-link">
+                <i class="nav-icon fa-solid fa-book"></i>
+                <p>
+                  ATTENDANCE
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="attendance.php" class="nav-link">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <p> &nbsp; TAKE ATTENDANCE</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="attendanceSheet.php" class="nav-link">
+                    <i class="fa-solid fa-sheet-plastic"></i>
+                    <p> &nbsp; ATTENDANCE SHEET</p>
+                  </a>
+                </li>
 
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-book"></i>
-                                <p>
-                                    ADD BOOKS
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-book-open"></i>
-                                <p>
-                                    ISSUE BOOKS
 
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
+              </ul>
+            </li>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fa-solid fa-user"></i>
-                                <p>
-                                    COURSE MASTER
+            <li class="nav-item">
+              <a href="addCourse.php" class="nav-link active">
+                <i class="nav-icon fa-solid fa-user"></i>
+                <p>
+                  COURSE MASTER
 
-                                </p>
-                            </a>
+                </p>
+              </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-graduation-cap"></i>
-                                <p>
-                                    STUDENTS
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="allStudent.php" class="nav-link">
-                                        <i class="fa-solid fa-school-circle-check"></i>
-                                        <p> &nbsp; All Students</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="addStudent.php" class="nav-link">
-                                        <i class="fa-solid fa-plus"></i>
-                                        <p> &nbsp; Add Students</p>
-                                    </a>
-                                </li>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa-solid fa-graduation-cap"></i>
+                <p>
+                  STUDENTS
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="allStudent.php" class="nav-link">
+                    <i class="fa-solid fa-school-circle-check"></i>
+                    <p> &nbsp; All Students</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="addStudent.php" class="nav-link">
+                    <i class="fa-solid fa-plus"></i>
+                    <p> &nbsp; Add Students</p>
+                  </a>
+                </li>
 
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    TERMS AND CONDITIONS
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                  TERMS AND CONDITIONS
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-gear"></i>
-                                <p>
-                                    SETTINGS
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa-solid fa-gear"></i>
+                <p>
+                  SETTINGS
 
-                                </p>
-                            </a>
+                </p>
+              </a>
 
-                        </li>
-                        <!-- <li class="nav-header">EXAMPLES</li>
+            </li>
+            <!-- <li class="nav-header">EXAMPLES</li>
             <li class="nav-item">
               <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
@@ -413,7 +417,7 @@
               </a>
             </li> -->
 
-                </nav>
+        </nav>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

@@ -278,9 +278,8 @@
                                 <i class="nav-icon fa-solid fa-chalkboard-user"></i>
                                 <p>
                                     FACULTIES
-
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
-                                <i class="fas fa-angle-left right"></i>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -299,25 +298,31 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="attendance.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-book"></i>
                                 <p>
-                                    ADD BOOKS
-                                    <span class="right badge badge-danger">New</span>
+                                    ATTENDANCE
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-book-open"></i>
-                                <p>
-                                    ISSUE BOOKS
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="attendance.php" class="nav-link">
+                                        <i class="fa-solid fa-clipboard-user"></i>
+                                        <p> &nbsp; TAKE ATTENDANCE</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="attendanceSheet.php" class="nav-link">
+                                        <i class="fa-solid fa-sheet-plastic"></i>
+                                        <p> &nbsp; ATTENDANCE SHEET</p>
+                                    </a>
+                                </li>
 
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
 
+                            </ul>
                         </li>
+
                         <li class="nav-item">
                             <a href="addCourse.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-user"></i>
@@ -384,7 +389,6 @@
             </li> -->
 
                 </nav>
-                <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
@@ -530,10 +534,26 @@
                                             <label for="exampleInputEmail1">Teacher</label>
                                             <select name="teacher" class="form-control">
                                                 <option value="">Select Teacher</option>
-                                                <option value="Kalpesh Sir">Kalpesh Sir</option>
-                                                <option value="Huzaifa Rapidwala">Huzaifa Rapidwala</option>
+                                                <?php
+                                                $myQ1 = "SELECT * FROM `faculty`";
+
+                                                $myResult1 = mysqli_query($myCon, $myQ1);
 
 
+                                                while ($myRow1 = mysqli_fetch_assoc($myResult1)) {
+
+                                                    $facultyName = $myRow1['name'];
+
+                                                    echo '
+                                                <option value=' . $facultyName . '>' . $facultyName . '</option>
+                                                ';
+
+
+
+
+                                                }
+
+                                                ?>
                                             </select>
 
                                         </div>
