@@ -45,10 +45,17 @@
 
         .current-day:hover {
             cursor: pointer;
+            background-color: gray;
+            color: black;
         }
 
         #myTab {
             background-color: #ffffff;
+        }
+
+        table tr td:hover {
+            cursor: pointer;
+            background-color: lightgray;
         }
     </style>
 
@@ -539,7 +546,7 @@
                 } else {
                     // Create a cell for each day
                     const cell = document.createElement('td');
-                    cell.textContent = date;
+                    cell.textContent = date.toString().padStart(2, '0'); // Format date with leading zeros
 
                     if (date === currentDate.getDate()) {
                         // Highlight the current day
@@ -576,8 +583,8 @@
     // Function to redirect to a specific page
     function redirectToPage(date) {
         const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Format month with leading zeros
+        const day = date.getDate().toString().padStart(2, '0'); // Format date with leading zeros
 
         // Construct the URL with the selected date as a query parameter
         const pageURL = `present.php?date=${year}-${month}-${day}`;

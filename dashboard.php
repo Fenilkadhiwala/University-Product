@@ -331,21 +331,21 @@ if (!isset($_COOKIE['uid'])) {
             </li>
             <li class="nav-item">
               <a href="attendance.php" class="nav-link">
-              <i class="nav-icon fa-solid fa-book"></i>
-              <p>
+                <i class="nav-icon fa-solid fa-book"></i>
+                <p>
                   ATTENDANCE
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
-              <li class="nav-item">
+                <li class="nav-item">
                   <a href="attendance.php" class="nav-link">
                     <i class="fa-solid fa-school-circle-check"></i>
                     <p> &nbsp; TAKE ATTENDANCE</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="attendanceSheet.php" class="nav-link">
                     <i class="fa-solid fa-school-circle-check"></i>
                     <p> &nbsp; ATTENDANCE SHEET</p>
                   </a>
