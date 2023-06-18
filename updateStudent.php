@@ -1,9 +1,11 @@
 <?php
-// if (!isset($_COOKIE['uid'])) {
 
-//     header('Location: index.php');
-//     exit();
-// }
+
+
+session_start();
+
+
+
 
 $lh = "localhost";
 $un = "root";
@@ -39,7 +41,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library Management System</title>
+    <title>Admin | Update Student Details</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -65,7 +67,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-
+    <link rel="icon" type="image" href="fi1.png">
 
 </head>
 
@@ -74,7 +76,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="dist/img/library.jpg" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="fi1.png" alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -212,9 +214,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
-                        role="button">
-                        <i class="fas fa-th-large"></i>
+                    <a class="nav-link" href="logout.php">
+                        <i class="fa-solid fa-power-off"></i>
                     </a>
                 </li>
             </ul>
@@ -247,7 +248,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
                             $con = new mysqli($lh, $un, $ps, $db);
 
-                            $uid = $_COOKIE['uid'];
+                            $uid = $_SESSION['uid'];
 
                             $q1 = "SELECT uname FROM `USERREGISTER` WHERE uid=$uid";
 
@@ -419,7 +420,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Add Faculty</h1>
+                            <h1 class="m-0">Update Student</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -505,10 +506,35 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                 <option selected>
                                                     <?php echo "$course" ?>
                                                 </option>
-                                                <option value="Certified">Certified</option>
-                                                <option value="Carrier">Carrier</option>
-                                                <option value="Modular">Modular</option>
-                                                <option value="Diploma">Diploma</option>
+                                                <?php
+
+                                                $myLh = "localhost";
+                                                $myUn = "root";
+                                                $myPs = "";
+                                                $myDb = "projects";
+
+                                                $myCon = new mysqli($myLh, $myUn, $myPs, $myDb);
+
+                                                // $uid = $_COOKIE['uid'];
+                                                
+                                                $myQ = "SELECT * FROM `course`";
+
+                                                $myResult = mysqli_query($myCon, $myQ);
+
+
+                                                while ($myRow = mysqli_fetch_assoc($myResult)) {
+
+                                                    $course = $myRow['cname'];
+
+                                                    echo '
+                                                    <option value=' . $course . '>' . $course . '</option>
+                                                    ';
+
+
+
+
+                                                }
+                                                ?>
 
                                             </select>
 
@@ -518,10 +544,28 @@ while ($row = mysqli_fetch_assoc($result)) {
                                             <label for="exampleInputEmail1">Teacher</label>
                                             <select name="teacher" class="form-control">
                                                 <option selected>
-                                                    <?php echo "$teacher" ?>
+                                                    <?php echo '' . $teacher . ''; ?>
                                                 </option>
-                                                <option value="Kalpesh Sir">Kalpesh Sir</option>
-                                                <option value="Huzaifa Rapidwala">Huzaifa Rapidwala</option>
+                                                <?php
+                                                $myQ1 = "SELECT * FROM `faculty`";
+
+                                                $myResult1 = mysqli_query($myCon, $myQ1);
+
+
+                                                while ($myRow1 = mysqli_fetch_assoc($myResult1)) {
+
+                                                    $facultyName = $myRow1['name'];
+
+                                                    echo '
+                                                <option value=' . $facultyName . '>' . $facultyName . '</option>
+                                                ';
+
+
+
+
+                                                }
+
+                                                ?>
 
 
                                             </select>
@@ -548,7 +592,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
+        <footer class="main-footer text-center">
             <strong>Copyright &copy; 2014-2021 <a href="https://github.com/Fenilkadhiwala">Fenil</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">

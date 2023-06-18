@@ -46,11 +46,12 @@ class GeneralMethods
         $row = mysqli_fetch_assoc($result);
 
         if ($row) {
+            
             $uid = $row['uid'];
             // setcookie('uid', $uid, time() + 3600);
             session_start();
             $_SESSION['uid'] = $uid;
-            header("location:dashboard.php?uid=$uid");
+            header("location:dashboard.php");
         } else {
             header("location:index.php?err=failed");
         }

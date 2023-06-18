@@ -1,10 +1,18 @@
+<?php
+
+
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | DataTables</title>
+    <title>Admin | Students List</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -18,7 +26,7 @@
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
+    <link rel="icon" type="image" href="fi1.png">
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
@@ -154,8 +162,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
+                    <a class="nav-link" href="logout.php">
+                        <i class="fa-solid fa-power-off"></i>
                     </a>
                 </li>
             </ul>
@@ -188,7 +196,7 @@
 
                             $con = new mysqli($lh, $un, $ps, $db);
 
-                            $uid = $_COOKIE['uid'];
+                            $uid = $_SESSION['uid'];
 
                             $q1 = "SELECT uname FROM `USERREGISTER` WHERE uid=$uid";
 
@@ -472,7 +480,7 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
+        <footer class="main-footer text-center">
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.2.0
             </div>

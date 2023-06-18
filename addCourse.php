@@ -1,43 +1,10 @@
 <?php
-// if (!isset($_COOKIE['uid'])) {
 
-//     header('Location: index.php');
-//     exit();
-// }
-// if (isset($_GET['err']) && $_GET['err'] == "success") {
-//     require __DIR__ . '/vendor/autoload.php'; // Include the Twilio PHP library
 
-//     // Your Twilio account SID and auth token
-//     $accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
-//     $authToken = 'YOUR_TWILIO_AUTH_TOKEN';
+session_start();
 
-//     // Creating a new Twilio client
-//     $client = new Twilio\Rest\Client($accountSid, $authToken);
 
-//     // Student's mobile number
-//     $studentMobileNumber = 'STUDENT_MOBILE_NUMBER';
-
-//     // Message to be sent
-//     $message = "Dear student, your registration was successful. Welcome to our program!";
-
-//     try {
-//         // Send SMS
-//         $message = $client->messages->create(
-//             $studentMobileNumber,
-//             [
-//                 'from' => 'YOUR_TWILIO_PHONE_NUMBER',
-//                 'body' => $message
-//             ]
-//         );
-
-//         echo "SMS sent successfully. SID: " . $message->sid;
-//     } catch (Exception $e) {
-//         echo "Error sending SMS: " . $e->getMessage();
-//     }
-// }
-
-// ?>
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library Management System</title>
+    <title>Admin | Add Course</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -71,7 +38,7 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-
+    <link rel="icon" type="image" href="fi1.png">
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
@@ -85,7 +52,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="dist/img/library.jpg" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="fi1.png" alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -223,9 +190,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
-                        role="button">
-                        <i class="fas fa-th-large"></i>
+                    <a class="nav-link" href="logout.php">
+                        <i class="fa-solid fa-power-off"></i>
                     </a>
                 </li>
             </ul>
@@ -258,7 +224,7 @@
 
                             $con = new mysqli($lh, $un, $ps, $db);
 
-                            $uid = $_COOKIE['uid'];
+                            $uid = $_SESSION['uid'];
 
                             $q1 = "SELECT uname FROM `USERREGISTER` WHERE uid=$uid";
 
@@ -289,124 +255,125 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
-              <a href="dashboard.php" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  DASHBOARD
+                        <li class="nav-item menu-open">
+                            <a href="dashboard.php" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    DASHBOARD
 
-                </p>
-              </a>
+                                </p>
+                            </a>
 
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa-solid fa-chalkboard-user"></i>
-                <p>
-                  FACULTIES
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="allFaculty.php" class="nav-link">
-                    <i class="fa-solid fa-school-circle-check"></i>
-                    <p> &nbsp; All Faculties</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="addFaculty.php" class="nav-link">
-                    <i class="fa-solid fa-plus"></i>
-                    <p> &nbsp; Add Faculties</p>
-                  </a>
-                </li>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-chalkboard-user"></i>
+                                <p>
+                                    FACULTIES
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="allFaculty.php" class="nav-link">
+                                        <i class="fa-solid fa-school-circle-check"></i>
+                                        <p> &nbsp; All Faculties</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addFaculty.php" class="nav-link">
+                                        <i class="fa-solid fa-plus"></i>
+                                        <p> &nbsp; Add Faculties</p>
+                                    </a>
+                                </li>
 
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="attendance.php" class="nav-link">
-                <i class="nav-icon fa-solid fa-book"></i>
-                <p>
-                  ATTENDANCE
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="attendance.php" class="nav-link">
-                    <i class="fa-solid fa-clipboard-user"></i>
-                    <p> &nbsp; TAKE ATTENDANCE</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="attendanceSheet.php" class="nav-link">
-                    <i class="fa-solid fa-sheet-plastic"></i>
-                    <p> &nbsp; ATTENDANCE SHEET</p>
-                  </a>
-                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="attendance.php" class="nav-link">
+                                <i class="nav-icon fa-solid fa-book"></i>
+                                <p>
+                                    ATTENDANCE
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="attendance.php" class="nav-link">
+                                        <i class="fa-solid fa-clipboard-user"></i>
+                                        <p> &nbsp; TAKE ATTENDANCE</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="attendanceSheet.php" class="nav-link">
+                                        <i class="fa-solid fa-sheet-plastic"></i>
+                                        <p> &nbsp; ATTENDANCE SHEET</p>
+                                    </a>
+                                </li>
 
 
-              </ul>
-            </li>
+                            </ul>
+                        </li>
 
-            <li class="nav-item">
-              <a href="addCourse.php" class="nav-link active">
-                <i class="nav-icon fa-solid fa-user"></i>
-                <p>
-                  COURSE MASTER
+                        <li class="nav-item">
+                            <a href="addCourse.php" class="nav-link active">
+                                <i class="nav-icon fa-solid fa-user"></i>
+                                <p>
+                                    COURSE MASTER
 
-                </p>
-              </a>
+                                </p>
+                            </a>
 
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa-solid fa-graduation-cap"></i>
-                <p>
-                  STUDENTS
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="allStudent.php" class="nav-link">
-                    <i class="fa-solid fa-school-circle-check"></i>
-                    <p> &nbsp; All Students</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="addStudent.php" class="nav-link">
-                    <i class="fa-solid fa-plus"></i>
-                    <p> &nbsp; Add Students</p>
-                  </a>
-                </li>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-graduation-cap"></i>
+                                <p>
+                                    STUDENTS
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="allStudent.php" class="nav-link">
+                                        <i class="fa-solid fa-school-circle-check"></i>
+                                        <p> &nbsp; All Students</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addStudent.php" class="nav-link">
+                                        <i class="fa-solid fa-plus"></i>
+                                        <p> &nbsp; Add Students</p>
+                                    </a>
+                                </li>
 
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
-                <p>
-                  TERMS AND CONDITIONS
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    TERMS AND CONDITIONS
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
 
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa-solid fa-gear"></i>
-                <p>
-                  SETTINGS
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-gear"></i>
+                                <p>
+                                    SETTINGS
 
-                </p>
-              </a>
+                                </p>
+                            </a>
 
-            </li>
-            <!-- <li class="nav-header">EXAMPLES</li>
+                        </li>
+                        <!-- <li class="nav-header">EXAMPLES</li>
             <li class="nav-item">
               <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
@@ -417,7 +384,7 @@
               </a>
             </li> -->
 
-        </nav>
+                </nav>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -571,7 +538,7 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
+        <footer class="main-footer text-center">
             <strong>Copyright &copy; 2014-2021 <a href="https://github.com/Fenilkadhiwala">Fenil</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">

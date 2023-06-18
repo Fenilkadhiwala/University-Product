@@ -1,13 +1,10 @@
 <?php
-// if (!isset($_COOKIE['uid'])) {
 
-//     header('Location: index.php');
-//     exit();
-// }
+
+session_start();
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library Management System</title>
+    <title>Admin | Add Students</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -41,7 +38,7 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-
+    <link rel="icon" type="image" href="fi1.png">
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
@@ -55,7 +52,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="dist/img/library.jpg" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="fi1.png" alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -228,7 +225,7 @@
 
                             $con = new mysqli($lh, $un, $ps, $db);
 
-                            $uid = $_COOKIE['uid'];
+                            $uid = $_SESSION['uid'];
 
                             $q1 = "SELECT uname FROM `USERREGISTER` WHERE uid=$uid";
 
@@ -545,7 +542,7 @@
                                                     $facultyName = $myRow1['name'];
 
                                                     echo '
-                                                <option value=' . $facultyName . '>' . $facultyName . '</option>
+                                                <option value=" ' . $facultyName . ' ">' . $facultyName . '</option>
                                                 ';
 
 

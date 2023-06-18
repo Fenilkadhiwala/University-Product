@@ -17,7 +17,7 @@ if (!isset($_SESSION['uid'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Library Management System</title>
+  <title>Admin | Dashboard</title>
   <style>
     body {
       overflow-x: hidden;
@@ -48,6 +48,9 @@ if (!isset($_SESSION['uid'])) {
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <link rel="icon" type="image" href="fi1.png">
+
+
   <script>
     window.onload = function () {
       // Sample data for the bar chart
@@ -97,7 +100,7 @@ if (!isset($_SESSION['uid'])) {
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/library.jpg" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" src="fi1.png" alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -265,7 +268,7 @@ if (!isset($_SESSION['uid'])) {
 
               $con = new mysqli($lh, $un, $ps, $db);
 
-              $uid = $_COOKIE['uid'];
+              $uid = $_SESSION['uid'];
 
               $q1 = "SELECT uname FROM `USERREGISTER` WHERE uid=$uid";
 
